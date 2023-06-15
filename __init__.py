@@ -1,19 +1,19 @@
-# ███╗   ██╗██████╗ 
+# ███╗   ██╗██████╗
 # ████╗  ██║██╔══██╗
 # ██╔██╗ ██║██║  ██║
 # ██║╚██╗██║██║  ██║
 # ██║ ╚████║██████╔╝
-# ╚═╝  ╚═══╝╚═════╝ 
-# 
+# ╚═╝  ╚═══╝╚═════╝
+#
 # “Commons Clause” License Condition v1.0
-# 
+#
 # See LICENSE for license details. If you did not receive a copy of the license,
 # it may be obtained at https://github.com/hugemenace/nd/blob/main/LICENSE.
-# 
+#
 # Software: ND Blender Addon
 # License: MIT
 # Licensor: T.S. & I.J. (HugeMenace)
-# 
+#
 # ---
 # Contributors: Tristo (HM)
 # ---
@@ -27,14 +27,21 @@ bl_info = {
     "description": "Non-destructive operations, tools, and generators.",
     "warning": "",
     "doc_url": "https://docs.nd.hugemenace.co/",
-    "category": "3D View"
+    "category": "3D View",
 }
 
 
 import bpy
 import rna_keymap_ui
 from bpy.types import AddonPreferences
-from bpy.props import BoolProperty, IntProperty, StringProperty, EnumProperty, FloatProperty, FloatVectorProperty
+from bpy.props import (
+    BoolProperty,
+    IntProperty,
+    StringProperty,
+    EnumProperty,
+    FloatProperty,
+    FloatVectorProperty,
+)
 from . import lib
 from . import interface
 from . import booleans
@@ -219,92 +226,92 @@ class NDPreferences(AddonPreferences):
 
     overlay_header_standard_color: FloatVectorProperty(
         name="Overlay Header Standard Color",
-        default=(255/255, 135/255, 55/255),
-        subtype='COLOR_GAMMA',
+        default=(255 / 255, 135 / 255, 55 / 255),
+        subtype="COLOR_GAMMA",
         size=3,
     )
 
     overlay_header_recalled_color: FloatVectorProperty(
         name="Overlay Header Recalled Color",
-        default=(82/255, 224/255, 82/255),
-        subtype='COLOR_GAMMA',
+        default=(82 / 255, 224 / 255, 82 / 255),
+        subtype="COLOR_GAMMA",
         size=3,
     )
 
     overlay_header_paused_color: FloatVectorProperty(
         name="Overlay Header Paused Color",
-        default=(238/255, 59/255, 43/2555),
-        subtype='COLOR_GAMMA',
+        default=(238 / 255, 59 / 255, 43 / 2555),
+        subtype="COLOR_GAMMA",
         size=3,
     )
 
     overlay_base_color: FloatVectorProperty(
         name="Overlay Base Color",
-        default=(255/255, 255/255, 255/255),
-        subtype='COLOR_GAMMA',
+        default=(255 / 255, 255 / 255, 255 / 255),
+        subtype="COLOR_GAMMA",
         size=3,
     )
 
     overlay_option_active_color: FloatVectorProperty(
         name="Overlay Option Active Color",
-        default=(55/255, 174/255, 255/255),
-        subtype='COLOR_GAMMA',
+        default=(55 / 255, 174 / 255, 255 / 255),
+        subtype="COLOR_GAMMA",
         size=3,
     )
 
     overlay_option_manual_override_color: FloatVectorProperty(
         name="Overlay Option Manual Override Color",
-        default=(237/255, 185/255, 94/255),
-        subtype='COLOR_GAMMA',
+        default=(237 / 255, 185 / 255, 94 / 255),
+        subtype="COLOR_GAMMA",
         size=3,
     )
 
     points_primary_color: FloatVectorProperty(
         name="Points Primary Color",
-        default=(82/255, 224/255, 82/255, 1.0),
-        subtype='COLOR_GAMMA',
+        default=(82 / 255, 224 / 255, 82 / 255, 1.0),
+        subtype="COLOR_GAMMA",
         size=4,
     )
 
     points_secondary_color: FloatVectorProperty(
         name="Points Secondary Color",
-        default=(255/255, 135/255, 55/255, 1.0),
-        subtype='COLOR_GAMMA',
+        default=(255 / 255, 135 / 255, 55 / 255, 1.0),
+        subtype="COLOR_GAMMA",
         size=4,
     )
 
     points_tertiary_color: FloatVectorProperty(
         name="Points Tertiary Color",
-        default=(82/255, 224/255, 82/255, 1.0),
-        subtype='COLOR_GAMMA',
+        default=(82 / 255, 224 / 255, 82 / 255, 1.0),
+        subtype="COLOR_GAMMA",
         size=4,
     )
 
     points_guide_line_color: FloatVectorProperty(
         name="Points Guide Line Color",
-        default=(82/255, 224/255, 82/255, 0.5),
-        subtype='COLOR_GAMMA',
+        default=(82 / 255, 224 / 255, 82 / 255, 0.5),
+        subtype="COLOR_GAMMA",
         size=4,
     )
 
     axis_x_color: FloatVectorProperty(
         name="Axis X Color",
-        default=(226/255, 54/255, 54/255),
-        subtype='COLOR_GAMMA',
+        default=(226 / 255, 54 / 255, 54 / 255),
+        subtype="COLOR_GAMMA",
         size=3,
     )
 
     axis_y_color: FloatVectorProperty(
         name="Axis Y Color",
-        default=(130/255, 221/255, 85/255),
-        subtype='COLOR_GAMMA',
+        default=(130 / 255, 221 / 255, 85 / 255),
+        subtype="COLOR_GAMMA",
         size=3,
     )
 
     axis_z_color: FloatVectorProperty(
         name="Axis Z Color",
-        default=(74/255, 144/255, 226/255),
-        subtype='COLOR_GAMMA',
+        default=(74 / 255, 144 / 255, 226 / 255),
+        subtype="COLOR_GAMMA",
         size=3,
     )
 
@@ -349,87 +356,51 @@ class NDPreferences(AddonPreferences):
 
     custom_screw_heads_path: StringProperty(
         name="Custom Screw Heads",
-        subtype='FILE_PATH',
+        subtype="FILE_PATH",
     )
 
-    overlay_show_annotation: BoolProperty(
-        name="Show Annotations",
-        default=False
-    )
+    overlay_show_annotation: BoolProperty(name="Show Annotations", default=False)
 
-    overlay_show_axis_x: BoolProperty(
-        name="Show X Axis",
-        default=False
-    )
+    overlay_show_axis_x: BoolProperty(name="Show X Axis", default=False)
 
-    overlay_show_axis_y: BoolProperty(
-        name="Show Y Axis",
-        default=False
-    )
+    overlay_show_axis_y: BoolProperty(name="Show Y Axis", default=False)
 
-    overlay_show_axis_z: BoolProperty(
-        name="Show Z Axis",
-        default=False
-    )
+    overlay_show_axis_z: BoolProperty(name="Show Z Axis", default=False)
 
-    overlay_show_bones: BoolProperty(
-        name="Show Bones",
-        default=False
-    )
+    overlay_show_bones: BoolProperty(name="Show Bones", default=False)
 
-    overlay_show_cursor: BoolProperty(
-        name="Show Cursor",
-        default=False
-    )
+    overlay_show_cursor: BoolProperty(name="Show Cursor", default=False)
 
-    overlay_show_extras: BoolProperty(
-        name="Show Extras",
-        default=False
-    )
+    overlay_show_extras: BoolProperty(name="Show Extras", default=False)
 
-    overlay_show_floor: BoolProperty(
-        name="Show Floor",
-        default=False
-    )
+    overlay_show_floor: BoolProperty(name="Show Floor", default=False)
 
-    overlay_show_motion_paths: BoolProperty(
-        name="Show Motion Paths",
-        default=False
-    )
+    overlay_show_motion_paths: BoolProperty(name="Show Motion Paths", default=False)
 
-    overlay_show_object_origins: BoolProperty(
-        name="Show Object Origins",
-        default=False
-    )
+    overlay_show_object_origins: BoolProperty(name="Show Object Origins", default=False)
 
     overlay_show_object_origins_all: BoolProperty(
-        name="Show Object Origins (All)",
-        default=False
+        name="Show Object Origins (All)", default=False
     )
 
-    overlay_show_ortho_grid: BoolProperty(
-        name="Show Ortho Grid",
-        default=False
-    )
+    overlay_show_ortho_grid: BoolProperty(name="Show Ortho Grid", default=False)
 
     overlay_show_outline_selected: BoolProperty(
-        name="Show Outline Selected",
-        default=False
+        name="Show Outline Selected", default=False
     )
 
     overlay_show_relationship_lines: BoolProperty(
-        name="Show Relationship Lines",
-        default=False
+        name="Show Relationship Lines", default=False
     )
 
-    overlay_show_stats: BoolProperty(
-        name="Show Stats",
-        default=False
-    )
+    overlay_show_stats: BoolProperty(name="Show Stats", default=False)
 
-    overlay_show_text: BoolProperty(
-        name="Show Text",
-        default=False
+    overlay_show_text: BoolProperty(name="Show Text", default=False)
+
+    user_language: EnumProperty(
+        name="User language",
+        items=lib.languages.languages_enum,
+        default="US",
     )
 
     def draw(self, context):
@@ -450,13 +421,14 @@ class NDPreferences(AddonPreferences):
         elif self.tabs == "THEME":
             self.draw_theme(box)
 
-
     def draw_general(self, box):
         general_prefs = [
             "utils_collection_name",
             "use_fast_booleans",
             "recon_poly_solidify",
-            "recon_poly_inscribed"]
+            "recon_poly_inscribed",
+            "user_language",
+        ]
 
         for pref in general_prefs:
             column = box.column(align=True)
@@ -464,11 +436,32 @@ class NDPreferences(AddonPreferences):
             row.prop(self, pref)
 
         general_boxed_prefs = [
-            ["The default angle to use for bevel and smoothing operations", "default_smoothing_angle", True],
-            ["Set a path for a custom screw heads .blend file", "custom_screw_heads_path", False],
-            ["Automatically check if addon is up to date when Blender starts", "enable_update_check", False],
-            ["Enable deprecated features for short term backwards compatibility", "enable_deprecated_features", False],
-            ["Enable experimental features. Use at your own risk!", "enable_experimental_features", False]]
+            [
+                "The default angle to use for bevel and smoothing operations",
+                "default_smoothing_angle",
+                True,
+            ],
+            [
+                "Set a path for a custom screw heads .blend file",
+                "custom_screw_heads_path",
+                False,
+            ],
+            [
+                "Automatically check if addon is up to date when Blender starts",
+                "enable_update_check",
+                False,
+            ],
+            [
+                "Enable deprecated features for short term backwards compatibility",
+                "enable_deprecated_features",
+                False,
+            ],
+            [
+                "Enable experimental features. Use at your own risk!",
+                "enable_experimental_features",
+                False,
+            ],
+        ]
 
         for label, prop, expanded in general_boxed_prefs:
             pref_box = box.box()
@@ -479,7 +472,6 @@ class NDPreferences(AddonPreferences):
             row = column.row()
             row.prop(self, prop, expand=expanded)
 
-    
     def draw_ui(self, box):
         ui_prefs = [
             ["overlay_dpi"],
@@ -491,7 +483,8 @@ class NDPreferences(AddonPreferences):
             ["lock_overlay_pinning"],
             ["enable_sidebar"],
             ["enable_axis_helper"],
-            ["axis_base_thickness", "axis_active_thickness", "axis_inactive_opacity"]]
+            ["axis_base_thickness", "axis_active_thickness", "axis_inactive_opacity"],
+        ]
 
         for prefs in ui_prefs:
             column = box.column(align=True)
@@ -527,12 +520,8 @@ class NDPreferences(AddonPreferences):
                 row = column.row()
             row.prop(self, pref)
 
-
     def draw_keymap(self, box):
-        overlay_prefs = [
-            "overlay_pin_key",
-            "overlay_pause_key",
-            "overlay_reset_key"]
+        overlay_prefs = ["overlay_pin_key", "overlay_pause_key", "overlay_reset_key"]
 
         column = box.column(align=True)
         row = column.row()
@@ -543,11 +532,11 @@ class NDPreferences(AddonPreferences):
             row = column.row()
             row.prop(self, pref)
 
-        name = "ND v%s" % ('.'.join([str(v) for v in bl_info['version']]))
+        name = "ND v%s" % (".".join([str(v) for v in bl_info["version"]]))
         wm = bpy.context.window_manager
         kc = wm.keyconfigs.user
-        
-        for keymap in ['3D View', 'Mesh', 'Object Mode']:
+
+        for keymap in ["3D View", "Mesh", "Object Mode"]:
             km = kc.keymaps.get(keymap)
 
             column = box.column(align=True)
@@ -558,8 +547,9 @@ class NDPreferences(AddonPreferences):
                 if kmi.idname == "wm.call_menu" and kmi.name.startswith(name):
                     column = box.column(align=True)
                     row = column.row()
-                    rna_keymap_ui.draw_kmi(["ADDON", "USER", "DEFAULT"], kc, km, kmi, row, 0)
-
+                    rna_keymap_ui.draw_kmi(
+                        ["ADDON", "USER", "DEFAULT"], kc, km, kmi, row, 0
+                    )
 
     def draw_theme(self, box):
         column = box.column(align=True)
@@ -581,12 +571,14 @@ class NDPreferences(AddonPreferences):
             "points_guide_line_color",
             "axis_x_color",
             "axis_y_color",
-            "axis_z_color"]
+            "axis_z_color",
+        ]
 
         for pref in colors:
             column = box.column(align=True)
             row = column.row()
             row.prop(self, pref)
+
 
 def register():
     lib.reload()
@@ -597,11 +589,11 @@ def register():
         registerable.reload()
         registerable.register()
 
-    version = '.'.join([str(v) for v in bl_info['version']])
+    version = ".".join([str(v) for v in bl_info["version"]])
     prefs = lib.preferences.get_preferences()
 
     if prefs.enable_update_check:
-        prefs.update_available = lib.updates.update_available(bl_info['version'])
+        prefs.update_available = lib.updates.update_available(bl_info["version"])
     else:
         prefs.update_available = False
 
@@ -614,7 +606,8 @@ def register():
             prefs.enable_mouse_values = True
         prefs.local_user_prefs_version = version
 
-    print("""
+    print(
+        """
 ███╗   ██╗██████╗ 
 ████╗  ██║██╔══██╗
 ██╔██╗ ██║██║  ██║
@@ -622,7 +615,9 @@ def register():
 ██║ ╚████║██████╔╝
 ╚═╝  ╚═══╝╚═════╝
 HugeMenace — ND Addon v%s
-    """ % (version));
+    """
+        % (version)
+    )
 
 
 def unregister():
